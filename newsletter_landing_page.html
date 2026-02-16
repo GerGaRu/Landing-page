@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newsletter Premium - Productividad e Inversión</title>
+    <meta
+      name="description"
+      content="Aprende sobre productividad e inversión con insights accionables cada semana."
+    />
+
+    <!-- Google Fonts: Playfair Display (Titular) & Inter (Cuerpo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ============================================
+           VARIABLES
+           ============================================ */
+      :root {
+        /* Palette: Premium Champagne & Charcoal */
+        --color-bg: #fafaf9;
+        --color-surface: #ffffff;
+        --color-text-main: #1c1c1e;
+        --color-text-muted: #666668;
+        --color-accent: #c9a55a; /* Gold */
+        --color-accent-hover: #b08d45;
+        --color-border: #e5e5e5;
+
+        /* Brand Colors */
+        --color-x: #000000;
+        --color-insta: #e1306c;
+
+        /* Spacing */
+        --spacing-xs: 0.5rem; /* 8px */
+        --spacing-sm: 1rem; /* 16px */
+        --spacing-md: 2rem; /* 32px */
+        --spacing-lg: 4rem; /* 64px */
+        --spacing-xl: 8rem; /* 128px */
+
+        /* Typography */
+        --font-display: 'Playfair Display', serif;
+        --font-body: 'Inter', sans-serif;
+
+        /* UI Elements */
+        --radius-sm: 8px;
+        --radius-md: 16px;
+        --radius-lg: 24px;
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+        --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.08);
+
+        --container-width: 1100px;
+      }
+
+      /* ============================================
+           RESET & BASE
+           ============================================ */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.2s ease;
+      }
+      ul {
+        list-style: none;
+      }
+
+      /* Grain Overlay */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stichTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 999;
+      }
+
+      /* ============================================
+           COMPONENTS
+           ============================================ */
+      .container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-sm);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-primary {
+        background-color: var(--color-text-main);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background-color: var(--color-accent);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .badge {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 0.25rem 0.75rem;
+        border-radius: 100px;
+        background: #f0f0f0;
+        color: var(--color-text-muted);
+        font-weight: 600;
+      }
+
+      /* ============================================
+           NAVBAR (Sticky)
+           ============================================ */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(250, 250, 249, 0.9);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 1rem 0;
+      }
+
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--color-accent);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: var(--spacing-md);
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--color-text-muted);
+      }
+      .nav-links a:hover {
+        color: var(--color-text-main);
+      }
+
+      /* ============================================
+           SECTIONS
+           ============================================ */
+      section {
+        padding: var(--spacing-xl) 0;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto var(--spacing-lg) auto;
+      }
+
+      .section-header h2 {
+        font-family: var(--font-display);
+        font-size: 2.5rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+      }
+
+      .section-header p {
+        color: var(--color-text-muted);
+        font-size: 1.1rem;
+      }
+
+      /* ============================================
+           HERO
+           ============================================ */
+      .hero {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        padding-top: var(--spacing-lg); /* Offset for navbar */
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-lg);
+        align-items: center;
+      }
+
+      /* Hero Text */
+      .hero-text h1 {
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 5vw, 4.5rem);
+        line-height: 1.1;
+        margin-bottom: var(--spacing-sm);
+        color: var(--color-text-main);
+      }
+
+      .hero-text .subtitle {
+        font-size: 1.25rem;
+        color: var(--color-text-muted);
+        margin-bottom: var(--spacing-md);
+        max-width: 500px;
+      }
+
+      /* Simulated Email Input CTA */
+      .cta-wrapper {
+        margin-top: var(--spacing-md);
+        max-width: 450px;
+      }
+
+      /* Looks like an input group but is just a big link/button container */
+      .email-capture-sim {
+        display: flex;
+        background: var(--color-surface);
+        padding: 0.5rem;
+        border-radius: 100px;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--color-border);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .email-capture-sim:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--color-accent);
+      }
+
+      .email-placeholder {
+        flex: 1;
+        padding: 0 1.5rem;
+        display: flex;
+        align-items: center;
+        color: #999;
+        font-size: 0.95rem;
+        cursor: text;
+      }
+
+      .email-capture-sim .btn {
+        padding: 0.75rem 2rem;
+        font-size: 0.95rem;
+        border-radius: 50px;
+      }
+
+      .cta-note {
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        color: #888;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      /* Hero Image - User's Asset */
+      .hero-image-container {
+        position: relative;
+      }
+
+      .image-frame {
+        position: relative;
+        z-index: 2;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        transform: rotate(-2deg);
+        transition: transform 0.5s ease;
+        background: #e0e0e0; /* Fallback */
+        aspect-ratio: 4/5; /* Portrait aspect ratio typical for portraits */
+      }
+
+      .image-frame:hover {
+        transform: rotate(0deg) scale(1.02);
+      }
+
+      .image-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Decorative circle behind image */
+      .hero-image-container::after {
+        content: '';
+        position: absolute;
+        top: 10%;
+        right: -5%;
+        width: 80%;
+        height: 80%;
+        background: var(--color-accent);
+        opacity: 0.1;
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      /* ============================================
+           SOCIAL CARDS
+           ============================================ */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .card {
+        background: var(--color-surface);
+        padding: 2.5rem;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--color-border);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+        border-color: currentColor;
+      }
+
+      .card.instagram:hover {
+        color: var(--color-insta);
+      }
+      .card.twitter:hover {
+        color: var(--color-x);
+      }
+
+      .card-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .card h3 {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--color-text-main);
+      }
+
+      .card p {
+        color: var(--color-text-muted);
+        margin-bottom: 2rem;
+        font-size: 1rem;
+      }
+
+      .card-link {
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .card-link::after {
+        content: '→';
+        transition: margin 0.2s;
+      }
+      .card:hover .card-link::after {
+        margin-left: 5px;
+      }
+
+      /* ============================================
+           RESOURCES
+           ============================================ */
+      .resource-card {
+        background: var(--color-surface);
+        padding: 2rem;
+        border-radius: var(--radius-sm);
+        border-left: 4px solid var(--color-accent);
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .resource-card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateX(5px);
+      }
+
+      .resource-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 1rem;
+      }
+
+      .resource-title {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      .resource-desc {
+        font-size: 0.95rem;
+        color: var(--color-text-muted);
+      }
+
+      /* ============================================
+           FOOTER
+           ============================================ */
+      footer {
+        padding: var(--spacing-lg) 0;
+        border-top: 1px solid var(--color-border);
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        :root {
+          --spacing-lg: 3rem;
+          --spacing-xl: 5rem;
+        }
+        .hero-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .email-capture-sim {
+          margin: 1rem auto;
+        }
+        .nav-links {
+          display: none;
+        } /* Simplified for mobile */
+        .hero-text h1 {
+          font-size: 2.5rem;
+        }
+        .image-frame {
+          max-width: 80%;
+          margin: 0 auto;
+          transform: rotate(0);
+        }
+        .hero-image-container::after {
+          right: 10%;
+          width: 80%;
+        }
+        .cta-note {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="container nav-content">
+        <div class="nav-logo">La Senda de GG</div>
+        <div class="nav-links">
+          <a href="#newsletter">Newsletter</a>
+          <a href="#social">Redes</a>
+          <a href="#recursos">Recursos Gratuitos</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="newsletter" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <span class="badge">Newsletter</span>
+            <h1>
+              Apremnde. <br />Optimiza. <br /><span
+                style="color: var(--color-accent); font-style: italic"
+                >Vive con sentido.</span
+              >
+            </h1>
+            <p class="subtitle">
+              La newsletter en la que comparto mis aprendizajes sobre inversión,
+              productividad y filosofía de vida.
+            </p>
+
+            <!-- CTA: Fake Input -->
+            <div class="cta-wrapper" style="text-align: center">
+              <a
+                href="https://substack.com/@lasendadegg"
+                target="_blank"
+                rel="noopener"
+                style="display: inline-block; text-decoration: none"
+              >
+                <button class="btn btn-primary">¡Me uno a la lista!</button>
+              </a>
+              <p class="cta-note" style="justify-content: center">
+                🔒 Comunidad en crecimiento.
+              </p>
+            </div>
+          </div>
+
+          <div class="hero-image-container">
+            <div class="image-frame">
+              <!-- 
+                        ========================================
+                        TU IMAGEN AQUÍ
+                        ========================================
+                        Reemplaza 'tu-lince-iberico.png' con tu archivo real.
+                        Asegúrate de que la imagen esté en la misma carpeta.
+                        -->
+              <img
+                src="assets/lince_landing_page.png"
+                alt="La Senda de GG - Newsletter"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL SECTION -->
+    <section id="social">
+      <div class="container">
+        <div class="section-header">
+          <h2>Únete a nuestras redes</h2>
+          <p>Donde la conversación continúa a diario.</p>
+        </div>
+
+        <div class="cards-grid">
+          <div class="card instagram">
+            <div class="card-icon">📸</div>
+            <h3>Instagram</h3>
+            <p>
+              Infografías de alto impacto y micro-contenidos para inspirar tu
+              camino financiero.
+            </p>
+            <a
+              href="https://instagram.com/lasendagg/"
+              class="card-link"
+              target="_blank"
+              rel="noopener"
+              >Ver perfil</a
+            >
+          </div>
+
+          <div class="card twitter">
+            <div class="card-icon">🐦</div>
+            <!-- Using bird for universal understanding or X literal -->
+            <h3>X (Twitter)</h3>
+            <p>
+              Mantente informado con hilos y debates sobre finanzas,
+              productividad y filosofía de vida.
+            </p>
+            <a
+              href="https://x.com/lasendagg/"
+              class="card-link"
+              target="_blank"
+              rel="noopener"
+              >Leer hilos</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES SECTION -->
+    <section id="recursos" style="background-color: #f4f4f4">
+      <div class="container">
+        <div class="section-header">
+          <h2>Recursos Gratuitos (en crecimiento)</h2>
+          <p>
+            Herramientas que he creado para mi propio camino y que ahora comparto contigo.
+          </p>
+        </div>
+
+     
+        <div class="cards-grid">
+          <!-- Resource 1 -->
+          <!-- TODO: Añade el enlace real en el href -->
+          <a
+            href="https://gergaru.github.io/calculadora-luz/"
+            class="resource-card"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="resource-header">
+              <div class="badge">Web Tool</div>
+              <span style="font-size: 1.5rem">🧮</span>
+            </div>
+            <h3 class="resource-title">Comparador de tarifa eléctrica</h3>
+            <p class="resource-desc">
+              Analiza si estás pagando de más en tu factura de luz.
+            </p>
+          </a>
+
+          <!-- 
+            PLANTILLA PARA FUTUROS RECURSOS
+            Copia y pega este bloque para añadir nuevos recursos:
+
+          <a
+            href="ENLACE_DEL_RECURSO"
+            class="resource-card"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="resource-header">
+              <div class="badge">TIPO (PDF, EXCEL, ETC)</div>
+              <span style="font-size: 1.5rem">EMOJI</span>
+            </div>
+            <h3 class="resource-title">TÍTULO DEL RECURSO</h3>
+            <p class="resource-desc">
+              Descripción breve del recurso.
+            </p>
+          </a>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 La Senda de GG. Todos los derechos reservados.</p>
+        <div style="margin-top: 1rem; opacity: 0.6">
+          <a href="#" style="margin: 0 10px">Política de Privacidad</a>
+          <a href="#" style="margin: 0 10px">Términos</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
